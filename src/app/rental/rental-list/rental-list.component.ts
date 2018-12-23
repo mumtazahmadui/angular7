@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RentalService } from '../shared/rental.service';
+import { Rental } from '../shared/rental.model';
 
 @Component({
   selector: 'app-rental-list',
@@ -7,11 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RentalListComponent implements OnInit {
 
-  result:any[] = [1,2,3,4];
+  rentals: Rental[] = [];
 
-  constructor() { }
+  constructor(private rentalService: RentalService) { }
 
   ngOnInit() {
+    this.rentals = this.rentalService.getRentals();
   }
 
 }
